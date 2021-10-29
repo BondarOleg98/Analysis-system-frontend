@@ -8,10 +8,17 @@ const getToolBarItems = () => {
           {
             label: "Sign in",
             icon: "pi pi-fw pi-sign-in",
+            to: "/login",
           },
           {
             label: "Sign out",
             icon: "pi pi-fw pi-sign-out",
+            to: "/login",
+          },
+          {
+            label: "Sign up",
+            icon: "pi pi-fw pi-user-plus",
+            to: "/register",
           },
         ],
       },

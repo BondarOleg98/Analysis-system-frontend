@@ -15,14 +15,21 @@ import Chart from "primevue/chart";
 import Splitter from "primevue/splitter";
 import SplitterPanel from "primevue/splitterpanel";
 import Card from "primevue/card";
+import Divider from "primevue/divider";
+import InputText from "primevue/inputtext";
+import Checkbox from "primevue/checkbox";
+import Dropdown from "primevue/dropdown";
+import Password from "primevue/password";
+import Dialog from "primevue/dialog";
+import BlockUI from "primevue/blockui";
 
 import "primevue/resources/themes/vela-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 
 const app = createApp(App);
 app.use(PrimeVue, { ripple: true });
-
 app.use(store);
 app.use(router);
 
@@ -38,5 +45,12 @@ app.component("Chart", Chart);
 app.component("Card", Card);
 app.component("Splitter", Splitter);
 app.component("SplitterPanel", SplitterPanel);
+app.component("Divider", Divider);
+app.component("InputText", InputText);
+app.component("Checkbox", Checkbox);
+app.component("Dropdown", Dropdown);
+app.component("Password", Password);
+app.component("Dialog", Dialog);
+app.component("BlockUI", BlockUI);
 
 app.mount("#app");
