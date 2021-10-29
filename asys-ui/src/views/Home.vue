@@ -1,8 +1,15 @@
 <template>
-  <div></div>
+  <div>
+    <Panel />
+  </div>
 </template>
 
 <script>
-export default {};
+import Panel from "@/components/Panel";
+export default {
+  components: {
+    Panel,
+  },
+};
 </script>
 <style></style>

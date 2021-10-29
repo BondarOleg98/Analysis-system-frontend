@@ -1,132 +1,141 @@
 <template>
-  <SplitterPanel :size="50" style="background-color: white">
-    <Splitter :gutterSize="0" layout="vertical">
-      <SplitterPanel :size="30">
-        <Splitter :gutterSize="0" layout="horizontal">
-          <SplitterPanel style="background-color: white" :size="40">
-            <Card
-              style="
-                width: 35rem;
-                background-color: white;
-                margin-top: 8em;
-                margin-left: 1em;
-                margin-right: 1em;
-                margin-bottom: 1.5em;
-              "
-            >
-              <template #content>
-                <Chart
-                  type="line"
-                  :data="multiAxisData"
-                  :options="multiAxisOptions"
-                />
-              </template>
-            </Card>
-          </SplitterPanel>
-          <SplitterPanel :size="40" style="background-color: white">
-            <Card
-              style="
-                width: 18.5rem;
-                margin-top: 8em;
-                background-color: white;
-                margin-left: 1.2em;
-                margin-bottom: 1.5em;
-              "
-            >
-              <template #content>
-                <div>
+  <div>
+    <Panel />
+  </div>
+  <div>
+    <SplitterPanel :size="50" style="background-color: white">
+      <Splitter :gutterSize="0" layout="vertical">
+        <SplitterPanel :size="30">
+          <Splitter :gutterSize="0" layout="horizontal">
+            <SplitterPanel style="background-color: white" :size="40">
+              <Card
+                style="
+                  width: 35rem;
+                  background-color: white;
+                  margin-top: 8em;
+                  margin-left: 1em;
+                  margin-right: 1em;
+                  margin-bottom: 1.5em;
+                "
+              >
+                <template #content>
                   <Chart
-                    type="radar"
-                    :data="chartData"
-                    :options="chartOptions"
+                    type="line"
+                    :data="multiAxisData"
+                    :options="multiAxisOptions"
                   />
-                </div>
-              </template>
-            </Card>
-          </SplitterPanel>
-          <SplitterPanel
-            class="p-d-flex p-ai-center p-jc-center"
-            :size="40"
-            style="background-color: white"
-          >
-            <Card
-              style="
-                width: 18.5rem;
-                margin-top: 8em;
-                background-color: white;
-                margin-left: 1.1em;
-                margin-bottom: 1.5em;
-              "
+                </template>
+              </Card>
+            </SplitterPanel>
+            <SplitterPanel :size="40" style="background-color: white">
+              <Card
+                style="
+                  width: 18.5rem;
+                  margin-top: 8em;
+                  background-color: white;
+                  margin-left: 1.2em;
+                  margin-bottom: 1.5em;
+                "
+              >
+                <template #content>
+                  <div>
+                    <Chart
+                      type="radar"
+                      :data="chartData"
+                      :options="chartOptions"
+                    />
+                  </div>
+                </template>
+              </Card>
+            </SplitterPanel>
+            <SplitterPanel
+              class="p-d-flex p-ai-center p-jc-center"
+              :size="40"
+              style="background-color: white"
             >
-              <template #content>
-                <div>
+              <Card
+                style="
+                  width: 18.5rem;
+                  margin-top: 8em;
+                  background-color: white;
+                  margin-left: 1.1em;
+                  margin-bottom: 1.5em;
+                "
+              >
+                <template #content>
+                  <div>
+                    <Chart
+                      type="pie"
+                      :data="chartDataPie"
+                      :options="lightOptionsPie"
+                    />
+                  </div>
+                </template>
+              </Card>
+            </SplitterPanel>
+          </Splitter>
+        </SplitterPanel>
+        <SplitterPanel :size="20">
+          <Splitter :gutterSize="0" layout="horizontal">
+            <SplitterPanel
+              class="p-d-flex p-ai-center p-jc-center"
+              :size="20"
+              style="background-color: white"
+            >
+              <Card
+                style="
+                  width: 37rem;
+                  background-color: white;
+                  margin-top: 1.5em;
+                  background-color: white;
+                  margin-left: 1em;
+                "
+              >
+                <template #content>
                   <Chart
-                    type="pie"
-                    :data="chartDataPie"
-                    :options="lightOptionsPie"
+                    type="bar"
+                    :data="basicDataBar"
+                    :options="basicOptionsBar"
                   />
-                </div>
-              </template>
-            </Card>
-          </SplitterPanel>
-        </Splitter>
-      </SplitterPanel>
-      <SplitterPanel :size="20">
-        <Splitter :gutterSize="0" layout="horizontal">
-          <SplitterPanel
-            class="p-d-flex p-ai-center p-jc-center"
-            :size="20"
-            style="background-color: white"
-          >
-            <Card
-              style="
-                width: 37rem;
-                background-color: white;
-                margin-top: 1.5em;
-                background-color: white;
-                margin-left: 1em;
-              "
+                </template>
+              </Card>
+            </SplitterPanel>
+            <SplitterPanel
+              class="p-d-flex p-ai-center p-jc-center"
+              :size="20"
+              style="background-color: white"
             >
-              <template #content>
-                <Chart
-                  type="bar"
-                  :data="basicDataBar"
-                  :options="basicOptionsBar"
-                />
-              </template>
-            </Card>
-          </SplitterPanel>
-          <SplitterPanel
-            class="p-d-flex p-ai-center p-jc-center"
-            :size="20"
-            style="background-color: white"
-          >
-            <Card
-              style="
-                width: 37rem;
-                margin-top: 1.5em;
-                background-color: white;
-                margin-left: 1em;
-              "
-            >
-              <template #content>
-                <Chart
-                  type="bar"
-                  :data="stackedData"
-                  :options="stackedOptions"
-                />
-              </template>
-            </Card>
-          </SplitterPanel>
-        </Splitter>
-      </SplitterPanel>
-    </Splitter>
-  </SplitterPanel>
+              <Card
+                style="
+                  width: 37rem;
+                  margin-top: 1.5em;
+                  background-color: white;
+                  margin-left: 1em;
+                "
+              >
+                <template #content>
+                  <Chart
+                    type="bar"
+                    :data="stackedData"
+                    :options="stackedOptions"
+                  />
+                </template>
+              </Card>
+            </SplitterPanel>
+          </Splitter>
+        </SplitterPanel>
+      </Splitter>
+    </SplitterPanel>
+  </div>
 </template>
 
 <script>
+import Panel from "@/components/Panel";
 export default {
   name: "ChartView",
+  components: {
+    Panel,
+  },
   data() {
     return {
       multiAxisData: {
