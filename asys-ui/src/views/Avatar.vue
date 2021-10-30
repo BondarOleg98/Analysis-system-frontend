@@ -26,8 +26,8 @@ export default {
   name: "AvatarView",
   data() {
     return {
-      loginFlag: true,
-      accountName: "O",
+      loginFlag: this.$store.state.auth.status.loggedIn,
+      accountName: this.$store.state.auth.user.username.toUpperCase().charAt(0),
     };
   },
 };

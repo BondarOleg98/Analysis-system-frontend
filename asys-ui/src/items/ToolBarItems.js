@@ -8,11 +8,6 @@ const getToolBarItems = () => {
         icon: "pi pi-fw pi-power-off",
         items: [
           {
-            label: "Sign in",
-            icon: "pi pi-fw pi-sign-in",
-            to: "/login",
-          },
-          {
             label: "Sign out",
             icon: "pi pi-fw pi-sign-out",
             to: "/login",

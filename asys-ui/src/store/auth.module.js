@@ -7,23 +7,7 @@ const initialState = user
 
 export const auth = {
   namespaced: true,
-  state: {
-    initialState,
-  },
-  mutations: {
-    loginSuccess(state, user) {
-      state.status.initialState.loggedIn = true;
-      state.user = user;
-    },
-    loginFailure(state) {
-      state.status.initialState.loggedIn = false;
-      state.user = null;
-    },
-    logout(state) {
-      state.status.initialState.loggedIn = false;
-      state.user = null;
-    },
-  },
+  state: initialState,
   actions: {
     login({ commit }, user) {
       return LoginService.login(user).then(
@@ -42,5 +26,18 @@ export const auth = {
       commit("logout");
     },
   },
-  modules: {},
+  mutations: {
+    loginSuccess(state, user) {
+      state.status.loggedIn = true;
+      state.user = user;
+    },
+    loginFailure(state) {
+      state.status.loggedIn = false;
+      state.user = null;
+    },
+    logout(state) {
+      state.status.loggedIn = false;
+      state.user = null;
+    },
+  },
 };

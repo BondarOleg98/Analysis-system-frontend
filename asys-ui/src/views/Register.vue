@@ -216,11 +216,26 @@
                 >
               </div>
               <BlockUI :blocked="blockedButton">
+                <template #footer>
+                  <Button icon="pi pi-check" label="Save" />
+                  <Button
+                    icon="pi pi-times"
+                    label="Cancel"
+                    class="p-button-secondary"
+                    style="margin-left: 0.5em"
+                  />
+                </template>
                 <Button
                   type="submit"
                   label="Submit"
                   class="p-mt-2"
                   @click="blockButton()"
+                />
+                <hr />
+                <Button
+                  label="Sign in"
+                  class="p-button-success"
+                  @click="this.$router.push('/login')"
                 />
               </BlockUI>
             </form>
