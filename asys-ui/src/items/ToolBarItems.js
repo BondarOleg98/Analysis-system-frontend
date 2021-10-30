@@ -1,3 +1,5 @@
+import store from "@/store/index.js";
+
 const getToolBarItems = () => {
   return {
     items: [
@@ -14,6 +16,9 @@ const getToolBarItems = () => {
             label: "Sign out",
             icon: "pi pi-fw pi-sign-out",
             to: "/login",
+            command: () => {
+              store.dispatch("auth/logout");
+            },
           },
           {
             label: "Sign up",
