@@ -237,6 +237,7 @@ import { useVuelidate } from "@vuelidate/core";
 import RegisterService from "@/services/RegisterService";
 import User from "@/models/User";
 import Account from "@/models/Account";
+import UserData from "@/models/UserData";
 
 export default {
   setup: () => ({
@@ -286,18 +287,20 @@ export default {
   },
   methods: {
     registration() {
-      const user = new User(
-        this.firstName,
-        this.lastName,
-        this.emailAddress,
-        new Account(this.userName, this.password, "READ_PRIVILEGE")
+      const data = new UserData(
+        new User(
+          this.firstName,
+          this.lastName,
+          this.emailAddress,
+          new Account(this.userName, this.password, "READ_PRIVILEGE")
+        )
       );
 
       this.registerService
-        .register(user)
+        .register(data)
         .then((response) => {
           console.log(response.data);
-          this.message = response.data;
+          this.message = response.data.message;
           this.succsess = true;
           this.toggleDialog();
         })

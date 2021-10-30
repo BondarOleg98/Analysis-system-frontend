@@ -45,14 +45,32 @@ export default {
       password: "",
     };
   },
+  loginService: null,
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.initialState.status.loggedIn;
+    },
+  },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/");
+    }
+  },
   methods: {
     handleSubmit() {
-      const data = {
+      const user = {
         username: this.username,
         password: this.password,
       };
 
-      console.log(data);
+      this.$store.dispatch("auth/login", user).then(
+        () => {
+          this.$router.push("/");
+        },
+        (error) => {
+          console.log("ERROR " + error);
+        }
+      );
     },
   },
 };

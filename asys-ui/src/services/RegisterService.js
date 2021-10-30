@@ -1,7 +1,8 @@
-import http from "@/services/initialize";
+import http from "@/services/DataAxiosInitialize";
 
 export default class RegisterService {
   register(user) {
-    return http.post("/v1/registerUser", user);
+    console.log(user);
+    return http.post("/api/v1/registerUser", user);
   }
 }
