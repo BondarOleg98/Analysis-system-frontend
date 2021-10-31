@@ -27,6 +27,7 @@
                 label="Sign Up"
                 icon="pi pi-user-plus"
                 class="p-button-success"
+                @click="this.$router.push('/register')"
               ></Button>
             </div>
           </div>
@@ -45,10 +46,9 @@ export default {
       password: "",
     };
   },
-  loginService: null,
   computed: {
     loggedIn() {
-      return this.$store.state.auth.initialState.status.loggedIn;
+      return this.$store.state.auth.status.loggedIn;
     },
   },
   created() {
@@ -68,7 +68,7 @@ export default {
           this.$router.push("/");
         },
         (error) => {
-          console.log("ERROR " + error);
+          console.log(error);
         }
       );
     },

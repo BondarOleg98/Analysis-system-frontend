@@ -6,8 +6,9 @@ class LoginService {
     params.append("username", user.username);
     params.append("password", user.password);
     params.append("grant_type", "password");
-    http.post("/oauth/token", params).then((response) => {
+    return http.post("/oauth/token", params).then((response) => {
       if (response.data.access_token) {
+        response.data.username = user.username;
         localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;
