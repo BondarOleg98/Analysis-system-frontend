@@ -22,6 +22,8 @@ import Dropdown from "primevue/dropdown";
 import Password from "primevue/password";
 import Dialog from "primevue/dialog";
 import BlockUI from "primevue/blockui";
+import Toast from "primevue/toast";
+import ToastService from "primevue/toastservice";
 
 import "primevue/resources/themes/vela-blue/theme.css";
 import "primevue/resources/primevue.min.css";
@@ -32,6 +34,7 @@ const app = createApp(App);
 app.use(PrimeVue, { ripple: true });
 app.use(store);
 app.use(router);
+app.use(ToastService);
 
 app.component("Toolbar", Toolbar);
 app.component("Button", Button);
@@ -52,5 +55,7 @@ app.component("Dropdown", Dropdown);
 app.component("Password", Password);
 app.component("Dialog", Dialog);
 app.component("BlockUI", BlockUI);
+app.component("BlockUI", BlockUI);
+app.component("Toast", Toast);
 
 app.mount("#app");
