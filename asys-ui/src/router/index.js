@@ -24,6 +24,11 @@ const routes = [
     name: "ChartView",
     component: () => import("../views/Chart.vue"),
   },
+  {
+    path: "/file",
+    name: "FileView",
+    component: () => import("../views/File.vue"),
+  },
 ];
 
 const router = createRouter({

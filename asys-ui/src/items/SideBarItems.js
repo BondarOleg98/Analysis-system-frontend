@@ -17,6 +17,7 @@ const getSideBarItems = () => {
               {
                 label: "CSV file",
                 icon: "pi pi-fw pi-file-excel",
+                to: "/file",
               },
             ],
           },
