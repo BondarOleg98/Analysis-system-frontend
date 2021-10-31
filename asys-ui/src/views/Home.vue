@@ -52,13 +52,22 @@ export default {
   mounted() {
     this.userService
       .getUserByUsername(this.$store.state.auth.user.username)
-      .then((response) => {
-        const user = response.data.users[0];
-        this.firstName = user.firstName;
-        this.lastName = user.lastName;
-        this.emailAddress = user.emailAddress;
-        this.userName = user.account.userName;
-      });
+      .then(
+        (response) => {
+          console.log(response);
+          const user = response.data.users[0];
+          this.firstName = user.firstName;
+          this.lastName = user.lastName;
+          this.emailAddress = user.emailAddress;
+          this.userName = user.account.userName;
+        },
+        (error) => {
+          if (error.response && error.response.status === 401) {
+            this.$store.dispatch("auth/logout");
+            this.$router.push("/login");
+          }
+        }
+      );
   },
 };
 </script>
