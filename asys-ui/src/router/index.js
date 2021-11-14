@@ -33,6 +33,11 @@ const routes = [
     name: "FileListView",
     component: () => import("../views/FileList.vue"),
   },
+  {
+    path: "/analysis",
+    name: "AnalysisView",
+    component: () => import("../views/Analysis.vue"),
+  },
 ];
 
 const router = createRouter({

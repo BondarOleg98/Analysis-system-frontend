@@ -9,7 +9,7 @@
           @uploader="uploader"
           :customUpload="true"
           :multiple="true"
-          accept=".xls, .py"
+          accept=".zip"
           :maxFileSize="1000000"
           @clear="resetFlag"
         >

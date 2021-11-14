@@ -125,6 +125,7 @@
         />
       </template>
     </Dialog>
+    <Toast />
   </div>
 </template>
 
@@ -146,7 +147,6 @@ export default {
       file: {},
       selectedFiles: null,
       filters: {},
-      submitted: false,
     };
   },
   created() {
@@ -163,8 +163,6 @@ export default {
         if (error.response && error.response.status === 401) {
           this.$store.dispatch("auth/logout");
           this.$router.push("/login");
-        } else {
-          this.errorUpload();
         }
       }
     );
@@ -179,18 +177,29 @@ export default {
       this.deleteFileDialog = false;
       this.callDeleting(this.file.id);
       this.file = {};
+      this.callSuccessMessage();
+    },
+    callSuccessMessage() {
+      this.$toast.add({
+        severity: "success",
+        summary: "Successful",
+        detail: "Deleted file/files",
+        life: 3000,
+      });
+    },
+    callErrorMessage() {
+      this.$toast.add({
+        severity: "error",
+        summary: "error",
+        detail: "Error during deleting",
+        life: 3000,
+      });
     },
     callDeleting(file_id) {
       this.fileService.deleteFile(file_id).then(
-        () => {
-          this.$toast.add({
-            severity: "success",
-            summary: "Successful",
-            detail: "Deleted",
-            life: 3000,
-          });
-        },
+        () => {},
         (error) => {
+          this.callErrorMessage();
           if (error.response && error.response.status === 401) {
             this.$store.dispatch("auth/logout");
             this.$router.push("/login");
@@ -212,6 +221,7 @@ export default {
       this.selectedFiles.forEach((selectedFile) => {
         this.callDeleting(selectedFile.id);
       });
+      this.callSuccessMessage();
       this.selectedFiles = null;
     },
     initFilters() {

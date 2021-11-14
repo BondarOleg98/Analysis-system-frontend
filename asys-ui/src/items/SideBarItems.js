@@ -41,17 +41,14 @@ const getSideBarItems = () => {
         icon: "pi pi-fw pi-search",
         items: [
           {
-            label: "Analyzing data",
-            icon: "pi pi-fw pi-table",
+            label: "Analyzing/Forecasting data",
+            icon: "pi pi-fw pi-briefcase",
+            to: "/analysis",
           },
           {
             label: "Build chart",
             icon: "pi pi-fw pi-chart-line",
             to: "/chart",
-          },
-          {
-            label: "Forecasting data",
-            icon: "pi pi-fw pi-briefcase",
           },
         ],
       },
