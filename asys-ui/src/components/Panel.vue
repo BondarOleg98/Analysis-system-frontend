@@ -50,4 +50,12 @@ export default {
   top: 0;
   width: 100%;
 }
+@media screen and (max-width: 960px) {
+  ::v-deep(.p-toolbar) {
+    flex-wrap: wrap;
+  }
+  ::v-deep(.p-toolbar) .p-button {
+    margin-bottom: 0.25rem;
+  }
+}
 </style>

@@ -216,15 +216,6 @@
                 >
               </div>
               <BlockUI :blocked="blockedButton">
-                <template #footer>
-                  <Button icon="pi pi-check" label="Save" />
-                  <Button
-                    icon="pi pi-times"
-                    label="Cancel"
-                    class="p-button-secondary"
-                    style="margin-left: 0.5em"
-                  />
-                </template>
                 <Button
                   type="submit"
                   label="Submit"

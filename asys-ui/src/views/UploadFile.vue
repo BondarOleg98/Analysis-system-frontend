@@ -9,7 +9,7 @@
           @uploader="uploader"
           :customUpload="true"
           :multiple="true"
-          accept=".xls"
+          accept=".xls, .py"
           :maxFileSize="1000000"
           @clear="resetFlag"
         >
@@ -19,6 +19,14 @@
         </FileUpload>
       </template>
     </Card>
+    <div v-if="loading">
+      <ProgressSpinner
+        style="width: 50px; height: 50px"
+        strokeWidth="8"
+        fill="#EEEEEE"
+        animationDuration=".5s"
+      />
+    </div>
   </div>
 </template>
 
@@ -28,16 +36,19 @@ import FileService from "@/services/FileService";
 
 export default {
   fileService: null,
+  accountName: "",
   components: {
     Panel,
   },
   data() {
     return {
       resetFlag: false,
+      loading: false,
     };
   },
   created() {
     this.fileService = new FileService();
+    this.accountName = this.$store.state.auth.user.username;
   },
   mounted() {},
   methods: {
@@ -49,6 +60,7 @@ export default {
         life: 3000,
       });
       this.resetFlag = true;
+      this.loading = false;
     },
     errorUpload() {
       this.$toast.add({
@@ -58,9 +70,11 @@ export default {
         life: 3000,
       });
       this.resetFlag = false;
+      this.loading = false;
     },
     uploader(event) {
-      this.fileService.uploadFile(event.files).then(
+      this.loading = true;
+      this.fileService.uploadFile(event.files, this.accountName).then(
         () => {
           this.onUpload();
         },

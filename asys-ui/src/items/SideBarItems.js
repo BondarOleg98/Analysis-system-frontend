@@ -13,21 +13,12 @@ const getSideBarItems = () => {
           {
             label: "New",
             icon: "pi pi-fw pi-plus",
-            items: [
-              {
-                label: "CSV file",
-                icon: "pi pi-fw pi-file-excel",
-                to: "/file",
-              },
-            ],
-          },
-          {
-            label: "Delete",
-            icon: "pi pi-fw pi-trash",
+            to: "/uploadFile",
           },
           {
             label: "List",
             icon: "pi pi-fw pi-bars",
+            to: "/files",
           },
         ],
       },
@@ -40,22 +31,8 @@ const getSideBarItems = () => {
             icon: "pi pi-fw pi-user-plus",
           },
           {
-            label: "Delete",
-            icon: "pi pi-fw pi-user-minus",
-          },
-          {
-            label: "Edit",
-            icon: "pi pi-fw pi-user-edit",
-          },
-          {
             label: "All users",
             icon: "pi pi-fw pi-users",
-            items: [
-              {
-                label: "List",
-                icon: "pi pi-fw pi-bars",
-              },
-            ],
           },
         ],
       },
