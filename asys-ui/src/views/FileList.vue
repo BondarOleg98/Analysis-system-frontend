@@ -23,7 +23,7 @@
           v-model:selection="selectedFiles"
           dataKey="id"
           :paginator="true"
-          :rows="2"
+          :rows="5"
           :filters="filters"
           paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           :rowsPerPageOptions="[2, 5, 7]"

@@ -58,4 +58,19 @@ export default class AnalysisService {
         }
       );
   }
+  buildChart(file_id) {
+    console.log(file_id);
+    return http
+      .post("/api/v1/buildChart/" + file_id, {
+        headers: authHeader(),
+      })
+      .then(
+        (data) => {
+          return Promise.resolve(data);
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+  }
 }

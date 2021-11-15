@@ -209,7 +209,7 @@ import FileService from "@/services/FileService";
 import AnalysisService from "@/services/AnalysisService";
 
 export default {
-  PACKAGE: null,
+  PACKAGE: "",
   fileService: null,
   components: {
     Panel,
