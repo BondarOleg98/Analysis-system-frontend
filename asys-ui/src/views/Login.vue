@@ -34,6 +34,7 @@
         </form>
       </template>
     </Card>
+    <Toast />
   </div>
 </template>
 
@@ -56,6 +57,14 @@ export default {
       this.$router.push("/");
     }
   },
+  callErrorMessage() {
+    this.$toast.add({
+      severity: "error",
+      summary: "Error",
+      detail: "Incorrect login or password",
+      life: 3000,
+    });
+  },
   methods: {
     handleSubmit() {
       const user = {
@@ -69,6 +78,7 @@ export default {
         },
         (error) => {
           console.log(error);
+          this.callErrorMessage();
         }
       );
     },

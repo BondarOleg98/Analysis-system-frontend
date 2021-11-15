@@ -16,7 +16,7 @@
                     :value="filesAnalysis"
                     dataKey="id"
                     :paginator="true"
-                    :rows="2"
+                    :rows="7"
                     :filters="filters"
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     :rowsPerPageOptions="[2, 5, 7]"
@@ -71,7 +71,7 @@
                     :value="filesForecasting"
                     dataKey="id"
                     :paginator="true"
-                    :rows="2"
+                    :rows="7"
                     :filters="filters"
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     :rowsPerPageOptions="[2, 5, 7]"
@@ -135,23 +135,35 @@
           >Are you sure you want to execute analysis package
         </span>
       </div>
+      <template #footer>
+        <Button
+          label="No"
+          icon="pi pi-times"
+          class="p-button-text"
+          @click="executeAnalysisDialog = false"
+        />
+        <Button
+          label="Yes"
+          icon="pi pi-check"
+          class="p-button-text"
+          @click="executeAnalysis"
+        />
+      </template>
     </Dialog>
-
     <Dialog
       v-model:visible="showResultAnalysisDialog"
-      :style="{ width: '500px', height: '500px' }"
+      :style="{ width: '500px', height: '300px' }"
       :modal="true"
     >
       <pre>{{ resultAnalysis }}</pre>
     </Dialog>
     <Dialog
       v-model:visible="showResultForecastingDialog"
-      :style="{ width: '500px', height: '500px' }"
+      :style="{ width: '500px', height: '300px' }"
       :modal="true"
     >
       <pre>{{ resultForecasting }}</pre>
     </Dialog>
-
     <Dialog
       v-model:visible="executeForecastingDialog"
       :style="{ width: '450px' }"
@@ -197,7 +209,7 @@ import FileService from "@/services/FileService";
 import AnalysisService from "@/services/AnalysisService";
 
 export default {
-  NAME_PACKAGE: null,
+  PACKAGE: null,
   fileService: null,
   components: {
     Panel,
@@ -221,7 +233,7 @@ export default {
   },
   created() {
     this.initFilters();
-    this.NAME_PACKAGE = "analysis";
+    this.PACKAGE = "analysis";
     this.fileService = new FileService();
     this.analysisService = new AnalysisService();
     this.accountName = this.$store.state.auth.user.username;
@@ -236,7 +248,7 @@ export default {
       this.fileService.getFiles(this.accountName).then(
         (files_data) => {
           files_data.data.forEach((file) => {
-            if (file.name === this.NAME_PACKAGE) {
+            if (file.name.includes(this.PACKAGE)) {
               analysisArray.push(file);
             } else {
               forecastingArray.push(file);
@@ -263,17 +275,18 @@ export default {
     },
     showResultAnalysis(file) {
       this.getAnalysisResult(file.id);
-      this.showResultAnalysisDialog = true;
     },
     showResultForecasting(file) {
       this.getForecastingResult(file.id);
-      this.showResultForecastingDialog = true;
     },
 
     getAnalysisResult(file_id) {
       this.analysisService.getAnalysisResult(file_id).then(
-        (data) => {
-          this.resultAnalysis = data.data;
+        (result) => {
+          if (result.data) {
+            this.resultAnalysis = result.data;
+            this.showResultAnalysisDialog = true;
+          }
         },
         (error) => {
           this.callErrorMessage();
@@ -286,8 +299,11 @@ export default {
     },
     getForecastingResult(file_id) {
       this.analysisService.getForecastingResult(file_id).then(
-        (data) => {
-          this.resultForecasting = data.data;
+        (result) => {
+          if (result.data) {
+            this.resultForecasting = result.data;
+            this.showResultAnalysisDialog = true;
+          }
         },
         (error) => {
           this.callErrorMessage();
