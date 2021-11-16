@@ -520,7 +520,6 @@ export default {
   },
   data() {
     return {
-      submitted: false,
       paramsDialog: false,
       selectedFile: null,
       selectedChart: null,
@@ -567,15 +566,12 @@ export default {
   },
   methods: {
     chooseData() {
-      this.submitted = false;
       this.paramsDialog = true;
     },
     hideDialog() {
       this.paramsDialog = false;
-      this.submitted = false;
     },
     buildChart() {
-      this.submitted = true;
       this.paramsDialog = false;
       this.analysisService.buildChart(this.selectedFile).then(
         (result) => {

@@ -1,4 +1,5 @@
 <template>
+  <Toast />
   <div>
     <Card style="width: 37rem; margin: auto; margin-top: 15em">
       <template #content>
@@ -34,7 +35,6 @@
         </form>
       </template>
     </Card>
-    <Toast />
   </div>
 </template>
 

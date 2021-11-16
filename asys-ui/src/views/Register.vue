@@ -1,5 +1,5 @@
 <template>
-  <div class="form-demo">
+  <div class="form-register">
     <Dialog
       v-model:visible="showMessage"
       :breakpoints="{ '960px': '80vw' }"
@@ -305,13 +305,11 @@ export default {
       this.registerService
         .register(data)
         .then((response) => {
-          console.log(response.data);
           this.message = response.data.message;
           this.succsess = true;
           this.toggleDialog();
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
           this.message = "Error during registration";
           this.succsess = false;
           this.toggleDialog();
@@ -363,17 +361,17 @@ export default {
 };
 </script>
 <style scoped>
-.form-demo .card {
+.form-register .card {
   min-width: 450px;
 }
-.form-demo .card form {
+.form-register .card form {
   margin-top: 2rem;
 }
-.form-demo .card .p-field {
+.form-register .card .p-field {
   margin-bottom: 1.5rem;
 }
 @media screen and (max-width: 960px) {
-  .form-demo .card {
+  .form-register .card {
     width: 80%;
   }
 }
