@@ -1,5 +1,4 @@
 <template>
-  <Toast />
   <div>
     <Card style="width: 37rem; margin: auto; margin-top: 15em">
       <template #content>
@@ -35,6 +34,7 @@
         </form>
       </template>
     </Card>
+    <Toast />
   </div>
 </template>
 
@@ -57,21 +57,20 @@ export default {
       this.$router.push("/");
     }
   },
-  callErrorMessage() {
-    this.$toast.add({
-      severity: "error",
-      summary: "Error",
-      detail: "Incorrect login or password",
-      life: 3000,
-    });
-  },
   methods: {
+    callErrorMessage() {
+      this.$toast.add({
+        severity: "error",
+        summary: "Error",
+        detail: "Incorrect login or password",
+        life: 3000,
+      });
+    },
     handleSubmit() {
       const user = {
         username: this.username,
         password: this.password,
       };
-
       this.$store.dispatch("auth/login", user).then(
         () => {
           this.$router.push("/");

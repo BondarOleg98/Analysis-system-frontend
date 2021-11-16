@@ -1,12 +1,16 @@
-import http from "@/services/FileAxiosInitialize";
+import http from "@/services/DataAxiosInitialize";
 import authHeader from "@/services/DataService";
 
 export default class AnalysisService {
   executeAnalysis(file_id) {
     return http
-      .post("/api/v1/executeAnalysis/" + file_id, {
-        headers: authHeader(),
-      })
+      .post(
+        "/api/v1/executeAnalysis/" + file_id,
+        {},
+        {
+          headers: authHeader(),
+        }
+      )
       .then(
         () => {
           return Promise.resolve();
@@ -32,9 +36,13 @@ export default class AnalysisService {
   }
   executeForecasting(file_id) {
     return http
-      .post("/api/v1/executeForecasting/" + file_id, {
-        headers: authHeader(),
-      })
+      .post(
+        "/api/v1/executeForecasting/" + file_id,
+        {},
+        {
+          headers: authHeader(),
+        }
+      )
       .then(
         () => {
           return Promise.resolve();
@@ -59,11 +67,14 @@ export default class AnalysisService {
       );
   }
   buildChart(file_id) {
-    console.log(file_id);
     return http
-      .post("/api/v1/buildChart/" + file_id, {
-        headers: authHeader(),
-      })
+      .post(
+        "/api/v1/buildChart/" + file_id,
+        {},
+        {
+          headers: authHeader(),
+        }
+      )
       .then(
         (data) => {
           return Promise.resolve(data);

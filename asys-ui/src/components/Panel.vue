@@ -61,7 +61,6 @@ export default {
       .getUserByUsername(this.$store.state.auth.user.username)
       .then(
         (response) => {
-          console.log(this.$store.state.auth.user.username);
           const user = response.data.users[0];
           if (user.account.roles.includes("WRITE_PRIVILEGE")) {
             this.admin = true;

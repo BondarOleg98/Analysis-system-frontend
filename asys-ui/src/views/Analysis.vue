@@ -282,9 +282,9 @@ export default {
 
     getAnalysisResult(file_id) {
       this.analysisService.getAnalysisResult(file_id).then(
-        (result) => {
-          if (result.data) {
-            this.resultAnalysis = result.data;
+        (response) => {
+          if (response.data) {
+            this.resultAnalysis = response.data;
             this.showResultAnalysisDialog = true;
           }
         },
@@ -299,10 +299,10 @@ export default {
     },
     getForecastingResult(file_id) {
       this.analysisService.getForecastingResult(file_id).then(
-        (result) => {
-          if (result.data) {
-            this.resultForecasting = result.data;
-            this.showResultAnalysisDialog = true;
+        (response) => {
+          if (response.data) {
+            this.resultForecasting = response.data;
+            this.showResultForecastingDialog = true;
           }
         },
         (error) => {
