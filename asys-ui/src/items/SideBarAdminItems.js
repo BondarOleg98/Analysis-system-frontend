@@ -1,4 +1,4 @@
-const getSideBarItems = () => {
+const getSideBarAdminItems = () => {
   return {
     items: [
       {
@@ -23,6 +23,17 @@ const getSideBarItems = () => {
         ],
       },
       {
+        label: "Users",
+        icon: "pi pi-fw pi-user",
+        items: [
+          {
+            label: "Delete users",
+            icon: "pi pi-fw pi-user-minus",
+            to: "/admin",
+          },
+        ],
+      },
+      {
         label: "Analysis",
         icon: "pi pi-fw pi-search",
         items: [
@@ -42,6 +53,6 @@ const getSideBarItems = () => {
   };
 };
 
-const sideBarItems = getSideBarItems();
+const sideBarAdminItems = getSideBarAdminItems();
 
-export default sideBarItems;
+export default sideBarAdminItems;

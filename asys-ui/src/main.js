@@ -24,6 +24,10 @@ import Dialog from "primevue/dialog";
 import BlockUI from "primevue/blockui";
 import Toast from "primevue/toast";
 import ToastService from "primevue/toastservice";
+import ProgressSpinner from "primevue/progressspinner";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import ColumnGroup from "primevue/columngroup";
 
 import "primevue/resources/themes/vela-blue/theme.css";
 import "primevue/resources/primevue.min.css";
@@ -55,7 +59,10 @@ app.component("Dropdown", Dropdown);
 app.component("Password", Password);
 app.component("Dialog", Dialog);
 app.component("BlockUI", BlockUI);
-app.component("BlockUI", BlockUI);
 app.component("Toast", Toast);
+app.component("ProgressSpinner", ProgressSpinner);
+app.component("DataTable", DataTable);
+app.component("Column", Column);
+app.component("ColumnGroup", ColumnGroup);
 
 app.mount("#app");

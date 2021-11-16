@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
@@ -7,7 +6,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import("../views/Home.vue"),
   },
   {
     path: "/login",
@@ -25,9 +24,24 @@ const routes = [
     component: () => import("../views/Chart.vue"),
   },
   {
-    path: "/file",
-    name: "FileView",
-    component: () => import("../views/File.vue"),
+    path: "/uploadFile",
+    name: "UploadFileView",
+    component: () => import("../views/UploadFile.vue"),
+  },
+  {
+    path: "/files",
+    name: "FileListView",
+    component: () => import("../views/FileList.vue"),
+  },
+  {
+    path: "/analysis",
+    name: "AnalysisView",
+    component: () => import("../views/Analysis.vue"),
+  },
+  {
+    path: "/admin",
+    name: "AdminView",
+    component: () => import("../views/Admin.vue"),
   },
 ];
 
